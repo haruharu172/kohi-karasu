@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>珈琲屋からす｜津田沼のレトロ純喫茶</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #160e0b;
+      --bg-card: #241712;
+      --bg-cream: #f5ede1;
+      --bg-cream-alt: #ebe0cf;
+      --ink-dark: #23150f;
+      --ink-muted: #645044;
+      --ink-light: #f8f2e8;
+      --accent: #c98d44;
+      --accent-soft: #e5bc82;
+      --border-light: rgba(35, 21, 15, 0.14);
+      --border-dark: rgba(248, 242, 232, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--ink-dark);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: "Noto Serif JP", serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Demo Notice Banner */
+    .demo-banner {
+      background: #2f1b12;
+      color: #f4dec0;
+      font-size: 12px;
+      text-align: center;
+      padding: 8px 14px;
+      border-bottom: 1px solid rgba(229, 188, 130, 0.28);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(22, 14, 11, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand {
+      color: var(--ink-light);
+      text-decoration: none;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: rgba(248, 242, 232, 0.85);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent-soft);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background:
+        linear-gradient(120deg, rgba(18, 11, 8, 0.92) 0%, rgba(28, 17, 12, 0.78) 55%, rgba(18, 11, 8, 0.88) 100%),
+        url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+      color: var(--ink-light);
+      padding: 96px 0 88px;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      border: 1px solid rgba(229, 188, 130, 0.45);
+      background: rgba(22, 14, 11, 0.55);
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      line-height: 1.28;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero p {
+      max-width: 600px;
+      color: rgba(248, 242, 232, 0.9);
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 24px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #160e0b;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid rgba(248, 242, 232, 0.4);
+      background: rgba(22, 14, 11, 0.4);
+      color: var(--ink-light);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent-soft);
+      color: var(--accent-soft);
+    }
+
+    /* Sections */
+    section {
+      padding: 74px 0;
+    }
+
+    .section-head {
+      margin-bottom: 36px;
+    }
+
+    .section-en {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #966328;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* About / Story Split */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .story-img {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 12px 28px rgba(35, 21, 15, 0.12);
+    }
+
+    .story-text h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .story-text p {
+      font-size: 15px;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #e7d8c3;
+      color: #4f3319;
+      font-weight: 500;
+    }
+
+    /* Features */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fffaf2;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 4px 14px rgba(35, 21, 15, 0.04);
+    }
+
+    .card-num {
+      font-family: "Noto Serif JP", serif;
+      font-size: 13px;
+      color: #966328;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--ink-muted);
+    }
+
+    /* Menu */
+    .menu-section {
+      background: var(--bg-cream-alt);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .menu-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .menu-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border-light);
+    }
+
+    .menu-box {
+      background: #fffaf2;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 28px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px dashed rgba(35, 21, 15, 0.18);
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-name {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .menu-desc {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    .menu-price {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      white-space: nowrap;
+      color: #5c3a16;
+    }
+
+    .menu-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    /* Info & Map */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .info-panel {
+      background: #fffaf2;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 26px;
+    }
+
+    .info-panel h3 {
+      font-size: 18px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    dl {
+      font-size: 14px;
+    }
+
+    dt {
+      font-weight: 700;
+      color: #5c3a16;
+      margin-top: 12px;
+    }
+
+    dt:first-child {
+      margin-top: 0;
+    }
+
+    dd {
+      color: var(--ink-muted);
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 250px;
+      border: 0;
+      border-radius: 8px;
+      margin-bottom: 14px;
+    }
+
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-small {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-dark {
+      background: #23150f;
+      color: #f8f2e8;
+    }
+
+    .btn-outline {
+      border: 1px solid #23150f;
+      color: #23150f;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-dark);
+      color: rgba(248, 242, 232, 0.78);
+      padding: 38px 0;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-inner a {
+      color: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .story-grid,
+      .menu-layout,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .story-img {
+        height: 230px;
+      }
+      nav {
+        gap: 12px;
+      }
+      nav a {
+        font-size: 12px;
+      }
+      .hero {
+        padding: 72px 0 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    ※Webサイト制作のご提案用に作成したデモページです（写真・一部メニュー表記は仮サンプルです）。
+  </div>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">珈琲屋からす</a>
+      <nav>
+        <a href="#about">お店のこだわり</a>
+        <a href="#menu">お品書き</a>
+        <a href="#access">店舗情報・地図</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="hero-tag">TSUDANUMA / RETRO COFFEE HOUSE</span>
+      <h1>珈琲の香りと、<br>静かに流れる時間。</h1>
+      <p>
+        JR津田沼駅・新津田沼駅から徒歩圏内。木の温もりと落ち着いた照明に包まれながら、
+        昔ながらの丁寧な一杯と自分の時間を楽しめる純喫茶です。
+      </p>
+      <div class="hero-actions">
+        <a href="#access" class="btn btn-primary">営業時間・アクセスを見る</a>
+        <a href="https://www.instagram.com/coffee_karasu/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">公式Instagramを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-en">ABOUT US</span>
+        <h2>津田沼で愛される、昔ながらの喫茶時間</h2>
+      </div>
+
+      <div class="story-grid">
+        <img
+          class="story-img"
+          src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80"
+          alt="落ち着いた喫茶店のイメージ"
+        />
+        <div class="story-text">
+          <h3>慌ただしい日常から少し離れて、<br>ほっと息をつける場所。</h3>
+          <p>
+            時代が変わっても変わらない、心地よい重厚感と温かみのある店内。
+            ひとりで読書や考え事にふける時間にも、大切な人とゆっくり語り合う時間にも寄り添います。
+          </p>
+          <div class="badge-row">
+            <span class="pill">JR津田沼駅 徒歩約5分</span>
+            <span class="pill">新津田沼駅 徒歩約3分</span>
+            <span class="pill">全席喫煙可能</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-num">01 / COFFEE</div>
+          <h3>昔ながらの深い味わい</h3>
+          <p>
+            香り高さとコクを大切にした定番ブレンドをはじめ、丁寧に淹れた珈琲を落ち着いた空間でお楽しみいただけます。
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-num">02 / ATMOSPHERE</div>
+          <h3>木の温もりとレトロ空間</h3>
+          <p>
+            駅近くの賑わいを忘れさせる穏やかな照明と木目調の内装。初めての方でも肩の力を抜いて過ごせます。
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-num">03 / NOTICE</div>
+          <h3>喫煙可・ご入店について</h3>
+          <p>
+            全席喫煙可能な店舗のため、法令に基づき20歳未満の方のご入店はご遠慮いただいております。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-en">MENU</span>
+        <h2>お品書き（イメージ）</h2>
+      </div>
+      <div class="menu-layout">
+        <img
+          class="menu-photo"
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80"
+          alt="珈琲と喫茶メニューのイメージ"
+        />
+        <div class="menu-box">
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">ブレンド珈琲</div>
+              <div class="menu-desc">まずは味わいたい看板の一杯。豊かな香りとすっきりとした後味。</div>
+            </div>
+            <div class="menu-price">¥550〜（仮）</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">アイス珈琲 / カフェオレ</div>
+              <div class="menu-desc">気分転換や食後のひとときにもぴったりな喫茶定番ドリンク。</div>
+            </div>
+            <div class="menu-price">¥600〜（仮）</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">トースト・軽食メニュー</div>
+              <div class="menu-desc">珈琲と相性のよい厚切りトーストや軽食をご用意しています。</div>
+            </div>
+            <div class="menu-price">各種（仮）</div>
+          </div>
+          <div class="menu-item">
+            <div>
+              <div class="menu-name">喫茶の甘味・デザート</div>
+              <div class="menu-desc">午後の休憩時間に嬉しい定番スイーツも楽しめます。</div>
+            </div>
+            <div class="menu-price">各種（仮）</div>
+          </div>
+          <p class="menu-note">※正式なメニュー名・価格はご導入時に実店舗の内容へ差し替え可能です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="access">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-en">INFORMATION & ACCESS</span>
+        <h2>店舗情報・アクセス</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-panel">
+          <h3>基本情報</h3>
+          <dl>
+            <dt>店名</dt>
+            <dd>珈琲屋からす</dd>
+            <dt>所在地</dt>
+            <dd>〒275-0016 千葉県習志野市津田沼1丁目10-41 十番街ビル1F</dd>
+            <dt>アクセス</dt>
+            <dd>新京成線「新津田沼駅」より徒歩約3分 / JR総武線「津田沼駅」北口より徒歩約5分</dd>
+            <dt>営業時間（目安）</dt>
+            <dd>月〜金 10:00〜19:00 / 土曜 10:00〜18:00（日曜定休）<br>※臨時休業や変更は公式Instagramをご確認ください。</dd>
+            <dt>喫煙・入店規定</dt>
+            <dd>全席喫煙可（20歳未満入店不可）</dd>
+          </dl>
+        </div>
+
+        <div class="info-panel">
+          <h3>アクセスマップ</h3>
+          <iframe
+            class="map-frame"
+            src="https://maps.google.com/maps?q=千葉県習志野市津田沼1丁目10-41+珈琲屋からす&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="珈琲屋からす 地図">
+          </iframe>
+          <div class="map-actions">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=千葉県習志野市津田沼1丁目10-41+珈琲屋からす"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-small btn-dark"
+            >Googleマップで経路を開く</a>
+            <a
+              href="https://www.instagram.com/coffee_karasu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-small btn-outline"
+            >Instagramで最新営業を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>珈琲屋からす｜千葉県習志野市津田沼1-10-41</div>
+      <div><a href="#">ページ上部へ戻る ↑</a></div>
+    </div>
+  </footer>
+</body>
+</html>
