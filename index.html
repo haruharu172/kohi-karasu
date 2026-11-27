@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>珈琲屋からす｜津田沼の自家焙煎・純喫茶</title>
+  <meta property="og:title" content="珈琲屋からす｜津田沼の自家焙煎・純喫茶" />
+  <meta property="og:description" content="津田沼の街角で、丁寧に淹れた香り高い珈琲と手作りスイーツをご用意しています。日常の喧騒を離れ、ほっと一息つく穏やかな時間をお過ごしください。" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #f7f3ec;
+      --bg-surface: #fffdf9;
+      --bg-warm: #efe8dc;
+      --ink-main: #2b211a;
+      --ink-muted: #6e5d4f;
+      --accent-roast: #4a3222;
+      --accent-amber: #9c6b3b;
+      --border: rgba(43, 33, 26, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background-color: var(--bg-base);
+      color: var(--ink-main);
+      line-height: 1.85;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .serif {
+      font-family: "Noto Serif JP", serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Demo Banner */
+    .demo-banner {
+      background: #3b281c;
+      color: #f4ece1;
+      font-size: 11px;
+      text-align: center;
+      padding: 7px 12px;
+      letter-spacing: 0.03em;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 243, 236, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink-main);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-main {
+      font-family: "Noto Serif JP", serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      color: var(--accent-amber);
+      letter-spacing: 0.14em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--ink-muted);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--ink-main);
+    }
+
+    .nav-cta {
+      background: var(--accent-roast);
+      color: #fffdf9;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 44px 0 76px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--accent-amber);
+      letter-spacing: 0.18em;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(25px, 4.3vw, 38px);
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 14.5px;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-roast);
+      color: #fffdf9;
+      box-shadow: 0 4px 14px rgba(74, 50, 34, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #61422e;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(43, 33, 26, 0.3);
+      color: var(--ink-main);
+      background: var(--bg-surface);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-roast);
+      background: var(--bg-warm);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(43, 33, 26, 0.15);
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 18px;
+      right: 18px;
+      max-width: 340px;
+      background: rgba(255, 253, 249, 0.96);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 6px;
+      box-shadow: 0 8px 20px rgba(43, 33, 26, 0.08);
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .hero-badge strong {
+      display: block;
+      color: var(--ink-main);
+      font-size: 13.5px;
+    }
+
+    /* Section common */
+    section {
+      padding: 76px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-head .sub {
+      display: block;
+      font-size: 12px;
+      color: var(--accent-amber);
+      letter-spacing: 0.2em;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .section-head h2 {
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(22px, 3.5vw, 28px);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    /* Concept */
+    .concept-band {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 26px 22px;
+      box-shadow: 0 4px 16px rgba(43, 33, 26, 0.04);
+    }
+
+    .card-num {
+      font-family: "Noto Serif JP", serif;
+      font-size: 13px;
+      color: var(--accent-amber);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      font-family: "Noto Serif JP", serif;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .card p {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+    }
+
+    /* Menu */
+    .menu-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(43, 33, 26, 0.04);
+    }
+
+    .menu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .menu-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .menu-title {
+      font-family: "Noto Serif JP", serif;
+      font-size: 15.5px;
+      font-weight: 600;
+    }
+
+    .menu-sub {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+
+    .menu-price {
+      font-family: "Noto Serif JP", serif;
+      font-size: 16px;
+      font-weight: 600;
+      white-space: nowrap;
+      color: var(--accent-roast);
+    }
+
+    .menu-footer {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .menu-note {
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    /* Info & Access */
+    .access-section {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+    }
+
+    .info-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 26px;
+      box-shadow: 0 4px 16px rgba(43, 33, 26, 0.04);
+    }
+
+    .info-card h3 {
+      font-family: "Noto Serif JP", serif;
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.06em;
+    }
+
+    dl {
+      font-size: 13.5px;
+    }
+
+    dt {
+      font-weight: 600;
+      color: var(--accent-amber);
+      margin-top: 12px;
+      font-size: 12.5px;
+    }
+
+    dt:first-child {
+      margin-top: 0;
+    }
+
+    dd {
+      color: var(--ink-main);
+    }
+
+    dd a {
+      color: var(--ink-main);
+      text-decoration: underline;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 240px;
+      border: 0;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .btn-sm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      font-size: 13px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: #2b211a;
+      color: rgba(255, 253, 249, 0.84);
+      padding: 38px 0;
+      font-size: 12.5px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: "Noto Serif JP", serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff;
+    }
+
+    footer a {
+      color: #dfb484;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid,
+      .access-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-img {
+        height: 300px;
+      }
+      nav {
+        display: none;
+      }
+      .menu-wrap {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">
+    ※Webサイト制作のご提案用に作成したサンプルページです（写真・一部メニュー表記は仮サンプルです）。
+  </div>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <span class="brand-main">珈琲屋からす</span>
+        <span class="brand-sub">TSUDANUMA KISSATEN</span>
+      </a>
+      <div class="nav-right">
+        <nav>
+          <a href="#concept">お店のこだわり</a>
+          <a href="#menu">お品書き</a>
+          <a href="#access">店舗情報・地図</a>
+        </nav>
+        <a href="https://www.instagram.com/coffee_karasu/" target="_blank" rel="noopener noreferrer" class="nav-cta">Instagram</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-label">TSUDANUMA自家焙煎・純喫茶</span>
+        <h1>一杯の珈琲と、<br>静かに流れる時間。</h1>
+        <p>
+          津田沼の街角で、丁寧に淹れた香り高い珈琲と手作りスイーツをご用意しています。日常の喧騒を離れ、ほっと一息つく穏やかな時間をお過ごしください。
+        </p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary">お品書きを見る</a>
+          <a href="https://www.instagram.com/coffee_karasu/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">公式Instagramを見る</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          class="hero-img"
+          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80"
+          alt="珈琲屋からす 珈琲イメージ"
+        />
+        <div class="hero-badge">
+          <strong>津田沼の落ち着いた純喫茶空間</strong>
+          <span>こだわりのハンドドリップ珈琲・喫茶メニュー</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concept" class="concept-band">
+    <div class="container">
+      <div class="section-head">
+        <span class="sub">CONCEPT</span>
+        <h2>珈琲屋からす のこだわり</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-num">其の一</div>
+          <h3>一杯ずつ丁寧に淹れる珈琲</h3>
+          <p>
+            豆の個性と焙煎度合いに合わせ、香り高く雑味のない一杯を丁寧にお淹れいたします。
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-num">其の二</div>
+          <h3>珈琲に寄り添う喫茶メニュー</h3>
+          <p>
+            トーストや手作りの甘味など、珈琲の余韻を引き立てる昔ながらの喫茶メニューをお楽しみいただけます。
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-num">其の三</div>
+          <h3>心落ち着く穏やかな空間</h3>
+          <p>
+            お一人での読書や考え事、大切な方との語らいなど、思い思いの時間をゆったりお過ごしいただけます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="container">
+      <div class="section-head">
+        <span class="sub">MENU</span>
+        <h2>お品書き目安（サンプル）</h2>
+      </div>
+      <div class="menu-wrap">
+        <div class="menu-row">
+          <div>
+            <div class="menu-title">からすブレンド珈琲</div>
+            <div class="menu-sub">深いコクと芳醇な香りの看板ブレンド</div>
+          </div>
+          <div class="menu-price">¥550〜（仮）</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-title">本日のストレート珈琲</div>
+            <div class="menu-sub">厳選した産地別のシングルオリジン</div>
+          </div>
+          <div class="menu-price">¥600〜（仮）</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-title">厚切りバタートースト</div>
+            <div class="menu-sub">外は香ばしく中はふんわり焼き上げた喫茶店の定番</div>
+          </div>
+          <div class="menu-price">¥450〜（仮）</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-title">自家製ケーキ・甘味各種</div>
+            <div class="menu-sub">珈琲との相性を考えて仕上げた手作りスイーツ</div>
+          </div>
+          <div class="menu-price">¥500〜（仮）</div>
+        </div>
+
+        <div class="menu-footer">
+          <span class="menu-note">※正式なメニュー内容・価格・営業時間は実際の店舗情報に合わせて差し替え可能です。</span>
+          <a href="https://www.instagram.com/coffee_karasu/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">公式Instagramで最新情報を見る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="access" class="access-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="sub">SHOP INFO &amp; ACCESS</span>
+        <h2>店舗情報・アクセス</h2>
+      </div>
+      <div class="access-grid">
+        <div class="info-card">
+          <h3>店舗概要</h3>
+          <dl>
+            <dt>店名</dt>
+            <dd>珈琲屋からす</dd>
+            <dt>エリア</dt>
+            <dd>千葉県船橋市・津田沼エリア</dd>
+            <dt>営業時間</dt>
+            <dd>最新情報は店頭または公式Instagramにてご案内しております</dd>
+            <dt>公式Instagram</dt>
+            <dd><a href="https://www.instagram.com/coffee_karasu/" target="_blank" rel="noopener noreferrer">@coffee_karasu</a></dd>
+          </dl>
+        </div>
+
+        <div class="info-card">
+          <h3>アクセスマップ</h3>
+          <iframe
+            class="map-frame"
+            src="https://maps.google.com/maps?q=津田沼+珈琲屋からす&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="珈琲屋からす アクセスマップ">
+          </iframe>
+          <div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=津田沼+珈琲屋からす"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary btn-sm"
+            >Googleマップで経路を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">珈琲屋からす</div>
+        <div>津田沼の自家焙煎・純喫茶｜Instagram: @coffee_karasu</div>
+      </div>
+      <div><a href="#">PAGE TOP ↑</a></div>
+    </div>
+  </footer>
+</body>
+</html>
